@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Department</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">
+        ADD A Department
+    </h1>
+    <div  class="alert alert-dark" role="alert">
+        <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+    </div>
+    <br>
+    <form th:action="@{/department/edit}" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="department_id" th:value="${department.getDepartment_id()}">
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="department_name">Department Name:</label>
+            <input
+                    th:value="${department.getDepartment_name()}"
+                    type="text"
+                    id="department_name"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="department_name"
+            >
+        </div>
+        <div style="max-width: 500px;margin: auto" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="department_name">Manager ID:</label>
+            <input
+                    th:value="${department.getManager_id()}"
+                    type="text"
+                    id="manager_id"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="manager_id">
+        </div>
+
+        <div style="text-align: center;margin-top: 10px">
+            <input  style="width: 200px" type="submit" class="btn btn-primary" value="UPDATE"/>
+        </div>
+    </form>
+    <div style="float: right">
+        <a  href="/index" th:href="@{/department}">Back to Department Management page</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">
+        Order Management
+
+    </h1>
+    <br>
+    <div style="text-align: center" id="department" class="alert alert-primary" role="alert">
+        <a  th:href="@{/order/edit}" class="alert-link">Add a Order</a>
+    </div>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Order Num</th>
+            <th scope="col">Due date</th>
+            <th scope="col">Install Date</th>
+            <th scope="col">Pool Location</th>
+            <th scope="col">Pick Id</th>
+            <th scope="col">Fit Date</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order:${allOrder}">
+            <td th:text="${order.getArea_code()+order.getOrder_num()}"></td>
+            <td th:text="${#dates.format(order.getDue_date(),'yyyy-MM-dd')}"></td>
+            <td th:text="${#dates.format(order.getInstall_date(),'yyyy-MM-dd')}"></td>
+            <td th:text="${order.getPool_location()}"></td>
+            <td th:text="${order.getPick_id()}"></td>
+            <td th:text="${#dates.format(order.getFit_date(),'yyyy-MM-dd')}"></td>
+
+            <td>
+                <a class="btn btn-sm btn-primary" th:href="@{/order/edit/}+${order.getOrder_id()}">Edit</a>
+                <form  style="float: right;margin-right: 20px" th:action="@{/order/edit/}+${order.getOrder_id()}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input
+                            id="deleteBtn"
+                            class="btn btn-sm btn-danger"
+                            type="submit"
+                            value="Delete"
+                    >
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="float: right">
+        <a  style="font-size: small" href="/index" th:href="@{/index}">Back to Home page</a>
+    </div>
+
+</div>
+</body>
+</html>

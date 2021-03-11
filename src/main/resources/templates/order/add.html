@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">
+        ADD A Order
+    </h1>
+    <div  class="alert alert-dark" role="alert">
+        <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+    </div>
+    <br>
+    <form th:action="@{/order/edit}" method="post">
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="due_date">Due Date:</label>
+            <input
+                    type="date"
+                    id="due_date"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="due_date"
+            >
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="purchaser_name">Purchaser Name:</label>
+            <input
+                    type="text"
+                    id="purchaser_name"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="purchaser_name">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="mobile">Mobile :</label>
+            <input
+                    type="text"
+                    id="mobile"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="mobile">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="area_code">Area Code :</label>
+            <input
+                    type="text"
+                    id="area_code"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="area_code">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="product_name">Product Name :</label>
+            <input
+                    type="text"
+                    id="product_name"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="product_name">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="order_num">Order Num :</label>
+            <input
+                    type="text"
+                    id="order_num"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="order_num">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="sale_price">Sale Price :</label>
+            <input
+                    type="number"
+                    id="sale_price"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="sale_price">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="install_date">Install Date :</label>
+            <input
+                    type="date"
+                    id="install_date"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="install_date">
+        </div>
+        <div style="max-width: 500px;margin: auto; margin-bottom: 10px" class="input-group input-group-lg">
+            <label style="width: 150px;line-height: 47.71px; margin:0" for="powder_color">Powder Color :</label>
+            <input
+                    type="text"
+                    id="powder_color"
+                    class="form-control"
+                    aria-label="Large"
+                    aria-describedby="inputGroup-sizing-sm"
+                    name="powder_color">
+        </div>
+        <div style="text-align: center;margin-top: 10px">
+            <input  style="width: 200px" type="submit" class="btn btn-primary"/>
+        </div>
+    </form>
+    <div style="float: right">
+        <a  href="/index" th:href="@{/order}">Back to Department Management page</a>
+    </div>
+</div>
+
+</body>
+</html>

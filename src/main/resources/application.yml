@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML
+    suffix: .html
+    prefix: classpath:/templates/
+  datasource:
+      url: jdbc:mysql://localhost:3306/ssmbuild?useSSL=false&serverTimezone=UTC
+      username: root
+      password: 123321
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: mysql
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  jooq:
+    sql-dialect: org.hibernate.dialect.MySQL8Dialect
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">
+        Employee Management
+
+    </h1>
+    <div  class="alert alert-dark" role="alert">
+        <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    </div>
+    <br>
+    <div style="text-align: center" id="department" class="alert alert-primary" role="alert">
+        <a href="/employee/add" th:href="@{/employees/edit}" class="alert-link">Add a Employee</a>
+    </div>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Last Name</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Wechat</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="emp:${list_emp}">
+            <td th:text="${emp.getLast_name()}"></td>
+            <td th:text="${emp.getFirst_name()}"></td>
+            <td th:text="${emp.getMobile()}"></td>
+            <td th:text="${emp.getWechat()}"></td>
+            <td>
+                <a class="btn btn-sm btn-primary" th:href="@{/employees/edit/}+${emp.getEmployees_id()}">Edit</a>
+                <form  style="float: right;margin-right: 20px" th:action="@{/employees/edit/}+${emp.getEmployees_id()}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input
+                            id="deleteBtn"
+                            class="btn btn-sm btn-danger"
+                            type="submit"
+                            value="Delete"
+                    >
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="float: right">
+        <a  style="font-size: small" href="/index" th:href="@{/index}">Back to Home page</a>
+    </div>
+
+</div>
+</body>
+</html>

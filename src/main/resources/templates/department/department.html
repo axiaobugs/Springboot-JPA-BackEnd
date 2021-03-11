@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<body>
+  <div class="container">
+    <h1 style="text-align: center">
+      Department Management
+
+    </h1>
+    <div  class="alert alert-dark" role="alert">
+      <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+    </div>
+    <br>
+    <div style="text-align: center" id="department" class="alert alert-primary" role="alert">
+      <a href="/department/add" th:href="@{/department/edit}" class="alert-link">Add a department</a>
+    </div>
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Depart Name</th>
+        <th scope="col">Managet ID</th>
+        <th scope="col">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr th:each="dep:${list_department}">
+          <td th:text="${dep.getDepartment_name()}"></td>
+          <td th:text="${dep.getManager_id()}"></td>
+          <td>
+            <a class="btn btn-sm btn-primary" th:href="@{/department/edit/}+${dep.getDepartment_id()}">Edit</a>
+            <form  style="float: right;margin-right: 20px" th:action="@{/department/edit/}+${dep.getDepartment_id()}" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input
+                      id="deleteBtn"
+                      class="btn btn-sm btn-danger"
+                      type="submit"
+                      value="Delete"
+              >
+            </form>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="float: right">
+      <a  style="font-size: small" href="/index" th:href="@{/index}">Back to Home page</a>
+    </div>
+
+  </div>
+</body>
+</html>
